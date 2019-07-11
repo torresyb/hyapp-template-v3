@@ -1,0 +1,55 @@
+@mixin flex($justifyContent: center){
+  display: flex;
+  align-items: center;
+  justify-content: $justifyContent;
+}
+
+// 按钮设置
+@mixin setButton ($width: 100%, $height: 90px, $borderRadius: 45px) {
+  width: $width;
+  border-radius: $borderRadius;
+  height: $height;
+  background: $btn-bgColor;
+  line-height: normal;
+  span {
+    font-size: 36px;
+    color: $btn-text-color!important;
+  }
+  &:active{
+    background: $btn-active-bgColor;
+    span {
+      color: $btn-text-active-color!important;
+    }
+  }
+}
+
+// 按钮不可点击
+@mixin setDisableBtn {
+  background: $btn-disable-bgColor;
+  span{
+    color: $btn-text-disable-color!important;
+  }
+}
+
+// 设置单选
+@mixin setIconCheck($width: 31px, $height: 31px, $marginRight: 12px) {
+  width: $width;
+  height: $height;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-right: $marginRight;
+  &.icon_check_default{
+    background: url('~@/assets/images/#{$APP_NAME}/global_ic_check_default.png') 0 0 no-repeat;
+    background-size: cover;
+  }
+  &.icon_check_selected{
+    background: url('~@/assets/images/#{$APP_NAME}/global_ic_check_selected.png') 0 0 no-repeat;
+    background-size: cover;
+  }
+}
+
+// 设置cell布局右侧宽度
+@mixin setCellWidth ($width: 170px) {
+  width: $width;
+  white-space: nowrap;
+}

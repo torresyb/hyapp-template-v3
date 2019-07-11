@@ -1,0 +1,30 @@
+$theme-bg-color : #f7f8f9; //主背景色
+$theme-color: #ff8737; // 主题色
+// 标准色
+$color-link: #4c68b7; // 链接色
+$color-primary: #ff8738; // 重点提醒
+
+// 按钮颜色
+$btn-bgColor: linear-gradient(90deg, #5d7edc 0%, #4c68b7 100%); // 按钮正常背景色
+$btn-active-bgColor: linear-gradient(90deg, #496bcd 0%, #3e5aa7 100%); // 按钮active 背景色
+$btn-disable-bgColor: #e5e5e5; // 按钮disable 背景色
+// 按钮文本颜色
+$btn-text-color: #ffffff; // 按钮默认文本颜色
+$btn-text-active-color: #ffffff; // 按钮active 文本颜色
+$btn-text-disable-color: #ffffff; // 按钮disable 文本颜色
+
+// 提示语背景色
+$tip_bgColor: #fff3df;
+$tip_text_color: #ff9d00;
+
+$index-background-color: #4c68b7; // 首页主题色
+
+// 进度条线的颜色
+$progress-line-color-default: #e5f6d3; // 默认
+$progress-line-color-active: #7ed321; // 已完成
+$progress-line-color-error: #f53332; // 失败
+
+// 小金条进度条颜色
+$xjt-progress-bgColor: linear-gradient(90deg,#fff,#f6e555); // 小金条进度条背景色
+$xjt-tips-color1: #f6e555;
+$xjt-tips-color2: #0fd;

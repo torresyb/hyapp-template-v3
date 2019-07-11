@@ -1,0 +1,23 @@
+@mixin arrow-icon{
+  content: " ";
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  border-width: 3px 3px 0 0;
+  border-color: #cccccc;
+  border-style: solid;
+  -webkit-transform: matrix(.71,.71,-.71,.71,0,0);
+  transform: matrix(.71,.71,-.71,.71,0,0);
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  right: 4px;
+
+}
+@mixin arrow($padding-right: 13px){
+  position: relative;
+  padding-right: $padding-right;
+  &:after{
+    @include arrow-icon
+  }
+}

@@ -1,0 +1,81 @@
+/*设置IOS页面长按不可复制粘贴，但是IOS上出现input、textarea不能输入，因此将使用-webkit-user-select:auto;*/
+*{
+  -webkit-touch-callout:none;  /*系统默认菜单被禁用*/
+  -webkit-user-select:none; /*webkit浏览器*/
+  -moz-user-select:none;/*火狐*/
+  -ms-user-select:none; /*IE10*/
+  user-select:none;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+button, input, select, textarea {
+  -webkit-user-select:auto; /*webkit浏览器*/
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  border: none;
+}
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline
+}
+
+img {
+  border: 0 none;
+  vertical-align: top;
+  content: normal !important;
+}
+
+em,i {
+  font-style: normal
+}
+
+ol,ul {
+  list-style: none
+}
+
+button,h1,h2,h3,h4,h5,h6,input,select {
+  font-size: 100%;
+  font-family: inherit
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+a,a:visited {
+  text-decoration: none;
+  color: #333
+}
+[v-cloak] {
+  display: none;
+}
+html,body{
+  height: 100%;
+}
+body {
+  margin: 0 auto;
+  background: #fff;
+  font-size: 28px;
+  font-family: -apple-system,Helvetica,sans-serif;
+  line-height: 1.5;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%!important;
+}
+.clearfix:after{
+  content: '';
+  height: 0px;
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}

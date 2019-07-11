@@ -1,0 +1,9 @@
+{
+  "name": "hyapp-template-v3",
+  "short_name": "hyapp-template-v3",
+  "icons": [],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#4DBA87"
+}

@@ -1,0 +1,227 @@
+body{
+  background-color: $theme-bg-color;
+  font-size: 26px;
+  -webkit-overflow-scrolling: touch;
+}
+/*两端对齐*/
+.flex-between{
+  @include flex(space-between);
+}
+// ------ app
+#app{
+  .bg-fff{
+    background-color: #fff;
+  }
+  .bg-100{
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .hy-1px-no:after{
+    border: none;
+  }
+  .hy-red {
+    color: $color-error;
+  }
+  .cell-right {
+    justify-content: flex-end;
+  }
+  .hy-yellow {
+    color: #ff7e0f;
+  }
+  .mt20{
+    margin-top: 20px;
+  }
+  // 重置input
+  ::-webkit-input-placeholder {
+    color: $color-placeholder;
+    text-overflow: ellipsis;
+  }
+  .hyapp-input {
+    flex: 1;
+    height: 95px;
+    font-size: 30px;
+    width: 100%;
+  }
+  // 按钮样式
+  .hy-button{
+    @include setButton()
+  }
+  .hy-button.disabled{
+    @include setDisableBtn
+  }
+  .hy-group{
+    @extend .bg-fff;
+    padding: 0 36px;
+  }
+  // 全局cell Left宽度
+  .hy-cell{
+    .hy-cell-left, .hy-cell-right{
+      font-size: 30px;
+    }
+  }
+  .hy-cell-group{
+    @extend .bg-fff;
+    .hy-cell-left{
+      @include setCellWidth
+    }
+  }
+  // 联系人label宽度
+  .app-contact{
+    .hy-cell-group{
+      .hy-cell-left{
+        @include setCellWidth(190px)
+      }
+    }
+  }
+  // 全局cell 右侧箭头
+  .hy-cell{
+    &.height-auto{
+      height: auto;
+      min-height: 49px;
+    }
+    .hy-link{
+      border: none;
+      &:after{
+        @include setArrow(right)
+      }
+    }
+  }
+  // popup-pick
+  .hy-date-picker-mask {
+    .hy-date-picker-popup {
+      .hy-picker-popup-header{
+        font-size: 36px;
+      }
+    }
+  }
+  // VUX默认样式
+  .vux-flex-col, .vux-flex-row {
+    background-color: #fff!important;
+  }
+  // 注册协议弹框
+  .lr-protocol-dialog{
+    h1{
+      font-size: 36px;
+      margin-top: 0px;
+    }
+    .wordsWrap{
+      padding-left: 0;
+      padding-right: 0px;
+      font-size: 30px;
+      h2{
+        font-size: 30px;
+      }
+    }
+  }
+  // scroller 样式
+  .scroller-item {
+    height: 48px!important;
+    line-height: 48px!important;
+    font-size: 18px!important;
+    // color: #1473ff!important;
+    &.scroller-item-selected {
+      color: #1473ff!important;
+    }
+  }
+  .scroller-indicator {
+    height: 48px!important;
+    top: 95px!important;
+  }
+  // 重置弹框圆角
+  .weui-dialog {
+    border-radius: 10px!important;
+  }
+  // 地址选择箭头重置
+  .x-address{
+    .weui-cell_access{
+      .weui-cell__ft{
+        &:after{
+          content: '';
+          @include setArrow(right)
+        }
+      }
+    }
+  }
+  // 向左箭头
+  .right-arrow{
+    @include flex(space-between);
+    i.arrow-icon{
+      @include setArrow(right)
+    }
+  }
+}
+// ------- 全局popup样式
+.hy-popup{
+  .hy-popup-dialog{
+    @extend .bg-fff;
+    .popup-title{
+      height: 97px;
+      line-height: 97px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      color: #333;
+    }
+    .hy-cell{
+      padding-left: 36px;
+      padding-right: 20px;
+      .hy-cell-left{
+        font-size: 30px;
+      }
+    }
+  }
+}
+// ----------- 弹框重置
+.hy-confirm{
+  //协议
+  &.openAccount{
+    .hy-title{
+      text-align: center!important;
+    }
+    .hy-confirm-center{
+      height: 580px;
+      overflow-y: scroll;
+    }
+  }
+  .hy-confirm-btns{
+    font-size: 36px;
+    height: 90px;
+    line-height: 90px;
+    .hy-btn-sure{
+      color: $color-link!important;
+    }
+  }
+  .hy-confirm-content, .hy-confirm-main{
+    .hy-title{
+      text-align: center;
+      font-size: 36px;
+    }
+    .hy-txt{
+      font-size: 30px;
+      line-height: 45px;
+    }
+    .hy-close-btn::after, .hy-close-btn:before{
+      width: 1px;
+    }
+  }
+}
+
+// ----------- message-tip 重置
+.hyapp-tip:not(.error) {
+  color: $tip_text_color !important;
+  background-color: $tip_bgColor !important;
+}
+.hyapp-tip.error {
+  /* 采用默认样式 */
+}
+
+// ----------- picker 重置
+.vux-popup-header-title {
+  color: $color-text-title !important;
+}
+.vux-popup-header-left {
+  color: $color-text-sub !important;
+}
+.vux-popup-header-right {
+  color: $color-link !important;
+}
