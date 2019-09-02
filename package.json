@@ -32,7 +32,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "hyapp-ui": "^2.4.2",
-    "hyapp-utils": "^2.0.2",
+    "hyapp-utils": "^2.0.4",
     "image-webpack-loader": "^4.6.0",
     "node-sass": "^4.9.0",
     "postcss-aspect-ratio-mini": "^1.0.1",
