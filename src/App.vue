@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   mounted () {
     // 调用jsbrige方法
     // console.log(this.$appInvoked)
-  }
+  },
 }
 </script>
 <style lang="scss">

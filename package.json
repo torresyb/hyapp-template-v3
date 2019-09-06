@@ -8,6 +8,17 @@
     "report": "vue-cli-service build --report --mode pro",
     "lint": "vue-cli-service lint --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
@@ -30,10 +41,12 @@
     "copy-webpack-plugin": "^5.0.3",
     "cssnano": "^4.1.10",
     "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "husky": "^3.0.5",
     "hyapp-ui": "^2.4.2",
     "hyapp-utils": "^2.0.4",
     "image-webpack-loader": "^4.6.0",
+    "lint-staged": "^9.2.5",
     "node-sass": "^4.9.0",
     "postcss-aspect-ratio-mini": "^1.0.1",
     "postcss-cssnext": "^3.1.0",
