@@ -1,15 +1,25 @@
 <template>
   <div :class="['hyapp-page', type, {isIOS: $tools.getBrowser() === 'iOS'}]">
     <header class="hyapp-header">
-      <div class="ios-header" v-if="$tools.getBrowser() === 'iOS'"></div>
+      <div v-if="$tools.getBrowser() === 'iOS'"
+           class="ios-header"></div>
       <div class="hyapp-bar">
-        <div class="hy-back" @click="backHandle"></div>
-        <h1 class="title">{{title}}</h1>
-        <div class="header-right" @click="rightHandle" v-if="rightTxt !== ''">{{rightTxt}}</div>
+        <div class="hy-back"
+             @click="backHandle"></div>
+        <h1 class="title">
+          {{ title }}
+        </h1>
+        <div v-if="rightTxt !== ''"
+             class="header-right"
+             @click="rightHandle">
+          {{ rightTxt }}
+        </div>
       </div>
     </header>
     <div class="hyapp-content">
-      <slot name="content">{{content}}</slot>
+      <slot name="content">
+        {{ content }}
+      </slot>
     </div>
     <slot name="footer"></slot>
   </div>
@@ -20,24 +30,24 @@ export default {
     title: {
       type: String,
       default: '',
-      required: true
+      required: true,
     },
     type: { // className
       type: String,
-      default: ''
+      default: '',
     },
     rightTxt: {
       type: String,
-      default: ''
+      default: '',
     },
     content: {
       type: String,
-      default: ''
+      default: '',
     },
     isBackPage: { // 是否返回上一页
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   methods: {
     backHandle () {
@@ -49,8 +59,8 @@ export default {
     },
     rightHandle () {
       this.$emit('rightClick')
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>

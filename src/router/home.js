@@ -2,5 +2,5 @@ const HomeIndex = () => import(/* webpackChunkName:'homeIndex' */ '@/pages/home/
 export default [{
   path: '/index',
   name: 'index-page',
-  component: HomeIndex
+  component: HomeIndex,
 }]

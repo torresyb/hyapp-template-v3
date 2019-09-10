@@ -28,8 +28,8 @@ function setConfigData (config) {
  * @returns {Promise<any>}
  */
 function reqInterceptor (config) {
-  return new Promise(resolve => {
-    window.vm.$appInvoked('appGetAjaxHeader', {}, rst => {
+  return new Promise((resolve) => {
+    window.vm.$appInvoked('appGetAjaxHeader', {}, (rst) => {
       if (!rst.productId) {
         rst.productId = rst.pid
       }
@@ -56,18 +56,14 @@ axios.interceptors.request.use(
     }
     if (isApp) {
       // 移动端
-      return reqInterceptor(config).then(rst => {
-        return rst
-      })
+      return reqInterceptor(config).then((rst) => rst)
     } else {
       // pc端
       config.headers = configHeaders
       return setConfigData(config)
     }
   },
-  error => {
-    return Promise.reject(error)
-  }
+  (error) => Promise.reject(error)
 )
 let timestamp1 = Date.parse(new Date())
 // 接口异常监控参数
@@ -76,7 +72,7 @@ let exceptionData = {
   errorType: '', // 错误类型 string
   requestUrl: '', // 接口url string
   requestUrlFunction: '', // 接口url - 标识 string
-  responseTime: '' // 响应时间 string
+  responseTime: '', // 响应时间 string
 }
 
 // 返回拦截
@@ -87,7 +83,7 @@ axios.interceptors.response.use(
     } else if (rst.data.code === configCenter.get('errorCode.user_007') || rst.data.code === configCenter.get('errorCode.user_001')) {
       // 未登录
       window.vm.$appInvoked('appTokenInvalid', {
-        message: rst.data.error.message
+        message: rst.data.error.message,
       })
       return Promise.reject(rst.data)
     }
@@ -120,12 +116,8 @@ function getMethod (url, config = {}) {
   return new Promise((resolve, reject) => {
     axios
       .get(url, config)
-      .then(rst => {
-        return resolve(rst.body || rst)
-      })
-      .catch(error => {
-        return reject(error)
-      })
+      .then((rst) => resolve(rst.body || rst))
+      .catch((error) => reject(error))
   })
 }
 
@@ -140,12 +132,8 @@ function postMethod (url, data = {}, config = {}) {
   return new Promise((resolve, reject) => {
     axios
       .post(url, data, config)
-      .then(rst => {
-        return resolve(rst.body || rst)
-      })
-      .catch(error => {
-        return reject(error)
-      })
+      .then((rst) => resolve(rst.body || rst))
+      .catch((error) => reject(error))
   })
 }
 
@@ -158,17 +146,13 @@ function allMethod (arr) {
   return new Promise((resolve, reject) => {
     axios
       .all(arr)
-      .then((...rsts) => {
-        return resolve(rsts)
-      })
-      .catch(error => {
-        return reject(error)
-      })
+      .then((...rsts) => resolve(rsts))
+      .catch((error) => reject(error))
   })
 }
 
 export default {
   get: getMethod,
   post: postMethod,
-  all: allMethod
+  all: allMethod,
 }

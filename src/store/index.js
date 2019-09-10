@@ -14,9 +14,9 @@ const store = new Vuex.Store({
   state: {},
   mutations: {},
   modules: {
-    Home
+    Home,
   },
-  strict: false
+  strict: false,
 })
 
 export default store

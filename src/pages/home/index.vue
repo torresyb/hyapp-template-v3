@@ -1,56 +1,59 @@
 <template>
-    <div class="hello">
-        <img src="../../assets/images/logo.png"/>
-        <h1>{{ msg }}</h1>
-        <h2>这是hyapp-ui button组件</h2>
-        <hy-button @hyClick="handleClick" class="my-button">hyapp-utils请求</hy-button>
-        <div class="tabs ignore hy-1px-b">
-            <a
-                    href="https://github.com/torresyb/hyapp-template"
-                    target="_blank"
-            >
-                hyapp-template
-            </a>
-            <a
-                    href="https://www.npmjs.com/package/hyapp-cli"
-                    target="_blank"
-            >
-                hyapp-cli
-            </a>
-            <a
-                    href="https://www.npmjs.com/package/hyapp-utils"
-                    target="_blank"
-            >
-                hyapp-utils
-            </a>
-            <a
-                    href="https://www.npmjs.com/package/hyapp-ui"
-                    target="_blank"
-            >
-                hyapp-ui
-            </a>
-        </div>
+  <div class="hello">
+    <img src="../../assets/images/logo.png" />
+    <h1>{{ msg }}</h1>
+    <h2>这是hyapp-ui button组件</h2>
+    <hy-button class="my-button"
+               @hyClick="handleClick">
+      hyapp-utils请求
+    </hy-button>
+    <div class="tabs ignore hy-1px-b">
+      <a
+        href="https://github.com/torresyb/hyapp-template"
+        target="_blank"
+      >
+        hyapp-template
+      </a>
+      <a
+        href="https://www.npmjs.com/package/hyapp-cli"
+        target="_blank"
+      >
+        hyapp-cli
+      </a>
+      <a
+        href="https://www.npmjs.com/package/hyapp-utils"
+        target="_blank"
+      >
+        hyapp-utils
+      </a>
+      <a
+        href="https://www.npmjs.com/package/hyapp-ui"
+        target="_blank"
+      >
+        hyapp-ui
+      </a>
     </div>
+  </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
 export default {
-  name: 'hyapp-template',
+  name: 'HyappTemplate',
   data () {
     return {
-      msg: 'Welcome to Your hyapp-template App'
+      msg: 'Welcome to Your hyapp-template App',
     }
   },
   computed: {
-    ...mapGetters(['getUserInfo'])
+    ...mapGetters(['getUserInfo']),
   },
   methods: {
     ...mapActions(['getUserInfoHandle']),
     handleClick () {
       this.getUserInfoHandle()
-    }
-  }
+    },
+  },
 }
 </script>
 

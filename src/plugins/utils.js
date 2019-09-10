@@ -30,6 +30,6 @@ class utils {
 const plugin = {
   install (Vue) {
     Vue.prototype.$u = utils
-  }
+  },
 }
 export default plugin

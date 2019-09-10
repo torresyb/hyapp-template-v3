@@ -1,10 +1,11 @@
 {
   "name": "hyapp-template-v3",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build --mode pro",
+    "cachebuild": "node ./cacheBuild/build.js",
     "report": "vue-cli-service build --report --mode pro",
     "lint": "vue-cli-service lint --fix"
   },
@@ -47,6 +48,7 @@
     "hyapp-utils": "^2.0.4",
     "image-webpack-loader": "^4.6.0",
     "lint-staged": "^9.2.5",
+    "md5-file": "^4.0.0",
     "node-sass": "^4.9.0",
     "postcss-aspect-ratio-mini": "^1.0.1",
     "postcss-cssnext": "^3.1.0",
@@ -57,7 +59,6 @@
     "postcss-write-svg": "^3.0.1",
     "qs": "^6.5.2",
     "sass-loader": "^7.1.0",
-    "uglifyjs-webpack-plugin": "^2.1.3",
     "vconsole": "^3.3.0",
     "vue-template-compiler": "^2.6.10"
   }

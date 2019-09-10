@@ -8,7 +8,7 @@ export default new VueRouter({
     ...HomeIndex,
     {
       path: '/',
-      redirect: '/index'
-    }
-  ]
+      redirect: '/index',
+    },
+  ],
 })

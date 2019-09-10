@@ -5,8 +5,8 @@ const plugin = {
     Vue.directive('focus', {
       inserted (el) {
         el.focus()
-      }
+      },
     })
-  }
+  },
 }
 export default plugin

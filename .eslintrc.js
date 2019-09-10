@@ -6,6 +6,9 @@ module.exports = {
     es6: true,
   },
   extends: ["plugin:vue/recommended", "eslint:recommended"],
+  parserOptions: {
+    parser: "babel-eslint",
+  },
   // extends: ["plugin:vue/strongly-recommended", "plugin:vue/recommended"],
   globals: { // 配置全局变量及是否允许修改
     "Vue": false,

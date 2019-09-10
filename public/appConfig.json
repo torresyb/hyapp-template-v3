@@ -1,0 +1,11 @@
+{
+  "options": {
+    "resource_manifest": "cache.html",
+    "max_cache_download_thread": 5,
+    "logging": true
+  },
+  "pagesDisablingCache": [
+    "index.html#/test",
+    "app/test/index.html"
+  ]
+}

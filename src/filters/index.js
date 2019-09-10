@@ -47,6 +47,7 @@ export function formatAmount (num, dot) {
     isQ = false
   }
   money = transformNum(money, isQ ? 2 : dot)
+  // eslint-disable-next-line radix
   return isQ ? (money.indexOf('.00') > -1 ? parseInt(money) : money) + 'k' : money
 }
 
@@ -56,6 +57,7 @@ export function formatAmount (num, dot) {
  * @returns {number}
  */
 export function formatDisNum (num) {
+  // eslint-disable-next-line radix
   let money = parseInt(num) + '' === 'NaN' ? 0 : parseInt(num)
   if (money === 10000) {
     money = '1w'
@@ -145,7 +147,7 @@ export function formateDateByFmt (date, fmt) {
     'm+': date.getMinutes(), // 分
     's+': date.getSeconds(), // 秒
     'q+': Math.floor((date.getMonth() + 3) / 3), // 季度
-    'S': date.getMilliseconds() // 毫秒
+    'S': date.getMilliseconds(), // 毫秒
   }
   if (/(Y+)/.test(fmt)) {
     fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))

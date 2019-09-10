@@ -5,7 +5,7 @@ let mixin = {
       if ([
         'errorCode.user_001',
         'errorCode.user_007',
-        'WP_MBC_NO_LOGIN_ERROR'
+        'WP_MBC_NO_LOGIN_ERROR',
       ].indexOf(error.code) > -1) {
         return false
       } else if (error.error && error.error.message) {
@@ -50,7 +50,7 @@ let mixin = {
     backClickPressHandle () {
       // 安卓拦截返回按键
       this.$appInvoked('appSetNative', {
-        shouldNotifyBack: true
+        shouldNotifyBack: true,
       })
       // 安卓点击返回执行操作
       this.$appGetInvoked('htmlBackPress', () => {
@@ -67,7 +67,7 @@ let mixin = {
       if (eventId) {
         this.$appInvoked('appExecStatistic', { eventId: eventId })
       }
-    }
-  }
+    },
+  },
 }
 export default mixin
