@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
-    "build": "vue-cli-service build --mode pro",
+    "build:pro": "vue-cli-service build --mode pro",
     "cachebuild": "node ./cacheBuild/build.js",
+    "build": "npm run build:pro && npm run cachebuild",
     "report": "vue-cli-service build --report --mode pro",
     "lint": "vue-cli-service lint --fix"
   },

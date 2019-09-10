@@ -11,13 +11,11 @@
 
 ```json
 "dev": "vue-cli-service serve --mode dev",
-"build": "vue-cli-service build --mode pro",
+"build:pro": "vue-cli-service build --mode pro",
 "cachebuild": "node ./cacheBuild/build.js", // 生成缓存配置文件
+"build": "npm run build:pro && npm run cachebuild",
 "report": "vue-cli-service build --report --mode pro",
-"lint": "vue-cli-service lint --fix",
+"lint": "vue-cli-service lint --fix"
 ```
-
-**注意实现**
-* npm run build之后，还需要运行 npm run cachebuild 生成缓存配置文件
 
 

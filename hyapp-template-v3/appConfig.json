@@ -11,11 +11,11 @@
 	"resources": [
 		{
 			"url": "index.html",
-			"md5": "6603a0e490e89d4973610933a9caa1ea",
-			"content": "<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content=\"IE=edge\"><meta content=\"initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1,width=device-width\" name=viewport><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=format-detection content=\"telephone=no\"><link rel=icon href=data:image/ico;base64,aWNv><title>个人中心</title><link href=./dist190910162345/css/app.2faafdc9.css rel=stylesheet></head><body><div id=app></div><script src=./static/js/vue.min.js></script><script src=./static/js/vue-router.min.js></script><script src=./static/js/axios.min.js></script><script src=./static/js/vuex.min.js></script><script src=./dist190910162345/js/chunk-vendor.fe6f5b99a2121eacad34.js></script><script src=./dist190910162345/js/app.cb53450eef13da83742f.js></script></body></html>"
+			"md5": "ad875e09ebcb3277bde23b33aaa473a9",
+			"content": "<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content=\"IE=edge\"><meta content=\"initial-scale=1,user-scalable=no,minimum-scale=1,maximum-scale=1,width=device-width\" name=viewport><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=format-detection content=\"telephone=no\"><link rel=icon href=data:image/ico;base64,aWNv><title>个人中心</title><link href=./dist190910170554/css/app.2faafdc9.css rel=stylesheet></head><body><div id=app></div><script src=./static/js/vue.min.js></script><script src=./static/js/vue-router.min.js></script><script src=./static/js/axios.min.js></script><script src=./static/js/vuex.min.js></script><script src=./dist190910170554/js/chunk-vendor.fe6f5b99a2121eacad34.js></script><script src=./dist190910170554/js/app.339143ba1db07a9461d8.js></script></body></html>"
 		},
 		{
-			"url": "dist190910162345/css/app.2faafdc9.css",
+			"url": "dist190910170554/css/app.2faafdc9.css",
 			"md5": "7c93d8e86db6860fb64bce8810b4e492"
 		},
 		{
@@ -35,31 +35,31 @@
 			"md5": "97decc9d819578c38a758ed0862bf113"
 		},
 		{
-			"url": "dist190910162345/js/chunk-vendor.fe6f5b99a2121eacad34.js",
+			"url": "dist190910170554/js/chunk-vendor.fe6f5b99a2121eacad34.js",
 			"md5": "80fbe1747ebdf1f2239b8f44857ef94c"
 		},
 		{
-			"url": "dist190910162345/js/app.cb53450eef13da83742f.js",
-			"md5": "ecf58eb4df9c7580bbc456c5363c8c55"
+			"url": "dist190910170554/js/app.339143ba1db07a9461d8.js",
+			"md5": "fd9e8716b96f1531e9e690fb2a2d5296"
 		},
 		{
-			"url": "dist190910162345/css/homeIndex.7606e569.css",
+			"url": "dist190910170554/css/homeIndex.7606e569.css",
 			"md5": "2a3ee06f98534f7eac7d8ca0e9b3e3c0"
 		},
 		{
-			"url": "dist190910162345/js/app.cb53450eef13da83742f.js.gz",
-			"md5": "f9218d0b730528b8ca13390e3d3e673e"
+			"url": "dist190910170554/js/app.339143ba1db07a9461d8.js.gz",
+			"md5": "e6eef9a3c8431dc09aad9431af349ee1"
 		},
 		{
-			"url": "dist190910162345/js/chunk-vendor.fe6f5b99a2121eacad34.js.gz",
+			"url": "dist190910170554/js/chunk-vendor.fe6f5b99a2121eacad34.js.gz",
 			"md5": "1ac8494305c2c6978ef8c11cdea66dd3"
 		},
 		{
-			"url": "dist190910162345/js/homeIndex.22a58455344c0f3d485e.js",
-			"md5": "9985c38d99da0abc389595b546605762"
+			"url": "dist190910170554/js/homeIndex.54327ea2e7c729e396e7.js",
+			"md5": "395d24014b8b382ed8444df124283c29"
 		},
 		{
-			"url": "dist190910162345/img/logo.82b9c7a5.png",
+			"url": "dist190910170554/img/logo.82b9c7a5.png",
 			"md5": "82b9c7a5a3f405032b1db71a25f67021"
 		}
 	]
