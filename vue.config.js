@@ -86,6 +86,9 @@ module.exports = {
     }
   },
   chainWebpack: (config) => {
+    /**
+     * 删除懒加载模块的 prefetch preload，降低带宽压力
+     */
     // 移除 prefetch 插件
     config.plugins.delete('prefetch');
     // 移除 preload 插件
