@@ -9,6 +9,18 @@
     </hy-button>
     <div class="tabs ignore hy-1px-b">
       <a
+        href="#/ajaxPage1"
+        target="_blank"
+      >
+        ajaxpage1
+      </a>
+      <a
+        href="#/ajaxPage2"
+        target="_blank"
+      >
+        ajaxpage2
+      </a>
+      <a
         href="https://github.com/torresyb/hyapp-template"
         target="_blank"
       >

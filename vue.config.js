@@ -111,8 +111,7 @@ module.exports = {
     config.resolve.alias
       .set('@', resolve('src'))
       .set('vue$', 'vue/dist/vue.esm.js')
-      .set('{APP_PROFILE}', resolve('src/profiles' + '/' + Config.APP_NAME))
-      .set('APP_IMG', resolve('src/assets/images' + '/' + Config.APP_NAME));
+      .set('APP_IMG', resolve('src/assets/images'));
     //图标压缩
     // config.module
     //   .rule("images")

@@ -40,5 +40,5 @@ if (process.env.NODE_ENV === 'production') {
   // eslint-disable-next-line no-undef
   console.log('版本号:', VERSION)
 } else {
-  require('./plugins/vconsole')
+  // require('./plugins/vconsole')
 }

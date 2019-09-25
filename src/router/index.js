@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import http from '../api/http'
 // 个人中心
 import HomeIndex from './home'
 Vue.use(VueRouter)
-export default new VueRouter({
+const router =  new VueRouter({
   routes: [
     ...HomeIndex,
     {
@@ -12,3 +13,12 @@ export default new VueRouter({
     },
   ],
 })
+/**
+ * 路由切换时取消上个页面接口请求
+ */
+router.beforeEach((to, from, next) => {
+  http.abortRequest()
+  next()
+})
+
+export default router

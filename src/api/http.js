@@ -1,86 +1,54 @@
 import axios from 'axios'
 import qs from 'qs'
-import * as configCenter from '@/plugins/configCenter'
 import configHeaders from './configHeaders'
+import {removePending, reqInterceptor, setConfigData, UrlExceptionMonitor} from './utils'
 // axios全局配置
 axios.defaults.withCredentials = true
-axios.defaults.timeout = 15000
+axios.defaults.timeout = 30000
 axios.defaults.retry = 1
 axios.defaults.retryDelay = 1000
+// 默认页面切换执行cancel操作，可以再config设置
+axios.defaults.routeChangeCancel = true
 
-/**
- * 设置config 返回值
- * @param config
- * @returns {*}
- */
-function setConfigData (config) {
-  if (config.method === 'post' && config.data && config.data.type === 'upload') {
-    config.data = config.data.form
-  } else if (config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
-    config.data = qs.stringify(config.data)
-  }
-  return config
-}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~常量设置
+let pending = [] // {url: '', cancel: callback} // 防止重复接口请求
 
-/**
- * 获取请求头设置
- * @param config
- * @returns {Promise<any>}
- */
-function reqInterceptor (config) {
-  return new Promise((resolve) => {
-    window.vm.$appInvoked('appGetAjaxHeader', {}, (rst) => {
-      if (!rst.productId) {
-        rst.productId = rst.pid
-      }
-      config.headers = Object.assign({}, config.headers, rst)
-      config = setConfigData(config)
-      return resolve(config)
-    })
-  })
-}
-
-// 请求拦截
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~请求拦截,移动端和pc端设置请求头
 axios.interceptors.request.use(
   function (config) {
-    if (config.isNoSetHeader) {
-      // 不用获取请求头信息
-      return config
-    }
-    let isApp = window.vm.$tools.getBrowser() === 'iOS' || window.vm.$tools.getBrowser() === 'android'
+    pending.length>0 && removePending(config, pending) // 存储、删除 pending
+    // 存储url和cancel回调
+    const CancelToken = axios.CancelToken
+    const source = CancelToken.source()
+    config.cancelToken = source.token
+    pending.push({
+      url: config.url + '&method=' + config.method + '&' + qs.stringify(config.data),
+      cancel: source.cancel,
+      routeChangeCancel: config.routeChangeCancel,
+    })
+
     // 基本设置请求头
-    if (config.type === 'upload') {
-      config.headers['Content-Type'] = 'multipart/form-data'
-    } else {
-      config.headers['Content-Type'] = config.headers['Content-Type'] || 'application/x-www-form-urlencoded'
-    }
+    config.headers['Content-Type'] = config.headers['Content-Type'] || 'application/json'
+    let isApp = window.vm.$tools.getBrowser() === 'iOS' || window.vm.$tools.getBrowser() === 'android'
     if (isApp) {
       // 移动端
       return reqInterceptor(config).then((rst) => rst)
     } else {
       // pc端
-      config.headers = configHeaders
+      Object.assign(config.headers, configHeaders, {os: window.vm.$tools.getBrowser() === 'iOS' ? 'ios' : 'android'})
       return setConfigData(config)
     }
   },
   (error) => Promise.reject(error)
 )
-let timestamp1 = Date.parse(new Date())
-// 接口异常监控参数
-let exceptionData = {
-  errorContent: '', // 错误内容
-  errorType: '', // 错误类型 string
-  requestUrl: '', // 接口url string
-  requestUrlFunction: '', // 接口url - 标识 string
-  responseTime: '', // 响应时间 string
-}
 
-// 返回拦截
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~返回拦截
 axios.interceptors.response.use(
   function (rst) {
+    removePending(rst.config, pending) // ajax响应后，从pending中移除
     if (rst.data.code === 'success') {
       return Promise.resolve(rst.data.result || {})
-    } else if (rst.data.code === configCenter.get('errorCode.user_007') || rst.data.code === configCenter.get('errorCode.user_001')) {
+    } else if (rst.data.code === 'errorCode.user_007' || rst.data.code === 'errorCode.user_001') {
       // 未登录
       window.vm.$appInvoked('appTokenInvalid', {
         message: rst.data.error.message,
@@ -90,18 +58,13 @@ axios.interceptors.response.use(
     return Promise.reject(rst.data)
   },
   function (error) {
-    let timestamp2 = Date.parse(new Date())
-    exceptionData.errorContent = error.message && JSON.stringify(error.message).substring(0, 98)
-    if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
-      exceptionData.errorType = '10'
-    } else {
-      exceptionData.errorType = '20'
+    if (axios.isCancel(error)) {
+      error.selfCancel = true
     }
-    let url = error.config.url
-    exceptionData.requestUrl = url
-    exceptionData.requestUrlFunction = url.substring(url.lastIndexOf('/') + 1, url.length).split('?')[0]
-    exceptionData.responseTime = timestamp2 - timestamp1
-    window.vm.$appInvoked('appUrlExceptionMonitor', exceptionData, '')
+    if (error.config) {
+      error.config && pending.length>0 && removePending(error.config, pending) // ajax响应后，从pending中移除
+      UrlExceptionMonitor(error) // 错误接口上报
+    }
     return Promise.reject(error)
   }
 )
@@ -151,8 +114,18 @@ function allMethod (arr) {
   })
 }
 
+/**
+ * 路由切换时，取消前一个页面未执行完的ajax请求
+ */
+function abortRequest () {
+  for(let p in pending) {
+    pending[p].routeChangeCancel && pending[p].cancel('取消当前页面所有未执行完请求')
+  }
+}
+
 export default {
   get: getMethod,
   post: postMethod,
   all: allMethod,
+  abortRequest,
 }

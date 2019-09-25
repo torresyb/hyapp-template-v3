@@ -4,7 +4,7 @@ let mixin = {
     pageBehaviorCellectionhandle (pageName, status) {
       this.$appInvoked('appCollectPageBehavior', {
         pageName: pageName,
-        inOutType: status
+        inOutType: status,
       })
     },
     // 控件数据
@@ -14,9 +14,9 @@ let mixin = {
         viewId: viewId,
         viewType: viewType,
         actionType: actionType,
-        content: text
+        content: text,
       })
-    }
-  }
+    },
+  },
 }
 export default mixin
