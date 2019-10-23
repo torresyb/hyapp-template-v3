@@ -80,6 +80,7 @@ module.exports = {
         //   to: 'app',
         //   ignore: ['.*']
         // }]),
+        // 忽略已编译文件
         new webpack.DllReferencePlugin({
           context: process.cwd(),
           manifest: require('./public/vendor/vendor-manifest.json'),
