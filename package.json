@@ -8,7 +8,8 @@
     "cachebuild": "node ./cacheBuild/build.js",
     "build": "npm run build:pro && npm run cachebuild",
     "report": "vue-cli-service build --report --mode pro",
-    "lint": "vue-cli-service lint --fix"
+    "lint": "vue-cli-service lint --fix",
+    "dll": "webpack -p --progress --config ./webpack.dll.conf.js"
   },
   "husky": {
     "hooks": {
@@ -31,22 +32,24 @@
     "vue-count-to": "^1.0.13",
     "axios": "^0.18.0",
     "crypto-js": "^3.1.9-1",
-    "exif-js": "^2.3.0"
+    "exif-js": "^2.3.0",
+    "hyapp-ui": "^2.4.2",
+    "hyapp-utils": "^2.0.4"
   },
   "devDependencies": {
     "@babel/polyfill": "^7.4.4",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
+    "add-asset-html-webpack-plugin": "^3.1.3",
     "babel-eslint": "^10.0.1",
+    "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "cssnano": "^4.1.10",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "husky": "^3.0.5",
-    "hyapp-ui": "^2.4.2",
-    "hyapp-utils": "^2.0.4",
     "image-webpack-loader": "^4.6.0",
     "lint-staged": "^9.2.5",
     "md5-file": "^4.0.0",
@@ -61,6 +64,7 @@
     "qs": "^6.5.2",
     "sass-loader": "^7.1.0",
     "vconsole": "^3.3.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "webpack-cli": "^3.3.9"
   }
 }

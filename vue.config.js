@@ -1,6 +1,8 @@
 const path = require('path')
+const webpack = require('webpack')
 const Config = require('./config')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 const packageJson = require('./package.json')
 // const CopyWebpackPlugin = require('copy-webpack-plugin')
 const assetsDir = './dist' + Config.getDate()
@@ -33,23 +35,19 @@ module.exports = {
       '/gateway': {
         target: 'http://t2-wsdaikuan.2345.com',
         changeOrigin: true,
-        logLevel: 'debug',
       },
       '/api/manage': {
         target: 'http://t2-wsdaikuan.2345.com',
         changeOrigin: true,
-        logLevel: 'debug',
       },
+    },
+    overlay: {
+      warnings: true,
+      errors: true,
     },
   },
   configureWebpack: (config) => {
     config.resolve.extensions = ['.js', '.vue', '.json'];
-    config.externals = {
-      'vue': 'Vue',
-      'vue-router': 'VueRouter',
-      'axios': 'axios',
-      'vuex': 'Vuex',
-    };
     if (IS_PROD) {
       config.optimization = {
         splitChunks: {
@@ -82,6 +80,27 @@ module.exports = {
         //   to: 'app',
         //   ignore: ['.*']
         // }]),
+        new webpack.DllReferencePlugin({
+          context: process.cwd(),
+          manifest: require('./public/vendor/vendor-manifest.json'),
+        }),
+        new webpack.DllReferencePlugin({
+          context: process.cwd(),
+          manifest: require('./public/vendor/hyappUtils-manifest.json'),
+        }),
+        new webpack.DllReferencePlugin({
+          context: process.cwd(),
+          manifest: require('./public/vendor/hyappUI-manifest.json'),
+        }),
+        // 将 dll 注入到 生成的 html 模板中
+        new AddAssetHtmlPlugin({
+          // dll文件位置
+          filepath: path.resolve(__dirname, './public/vendor/*.js'),
+          // dll 引用路径
+          publicPath: './vendor',
+          // dll最终输出的目录
+          outputPath: './vendor',
+        }),
       );
     }
   },
@@ -113,16 +132,16 @@ module.exports = {
       .set('vue$', 'vue/dist/vue.esm.js')
       .set('APP_IMG', resolve('src/assets/images'));
     //图标压缩
-    // config.module
-    //   .rule("images")
-    //   .use("image-webpack-loader")
-    //   .loader("image-webpack-loader")
-    //   .options({
-    //     mozjpeg: { progressive: true, quality: 65 },
-    //     optipng: { enabled: false },
-    //     pngquant: { quality: "65-90", speed: 4 },
-    //     gifsicle: { interlaced: false },
-    //     webp: { quality: 75 }
-    //   })
+    config.module
+      .rule("images")
+      .use("image-webpack-loader")
+      .loader("image-webpack-loader")
+      .options({
+        mozjpeg: { progressive: true, quality: 65 },
+        optipng: { enabled: false },
+        pngquant: { quality: "65-90", speed: 4 },
+        gifsicle: { interlaced: false },
+        webp: { quality: 75 },
+      })
   },
 }
