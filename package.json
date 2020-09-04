@@ -53,7 +53,7 @@
     "image-webpack-loader": "^4.6.0",
     "lint-staged": "^9.2.5",
     "md5-file": "^4.0.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^4.13.1",
     "postcss-aspect-ratio-mini": "^1.0.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-import": "^12.0.1",
